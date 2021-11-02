@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>eu.europeana</groupId>
-  <artifactId>spring-batch-mongo-jobrepo</artifactId>
+  <artifactId>spring-batch-mongo</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
