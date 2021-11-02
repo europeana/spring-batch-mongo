@@ -16,7 +16,7 @@ import org.springframework.batch.core.JobParameters;
 public class JobInstanceEntity {
   @Id private ObjectId _id;
 
-  @Indexed private String jobName;
+  private String jobName;
 
   private long jobInstanceId;
 

@@ -27,7 +27,7 @@ public class StepExecutionEntity {
 
   private long jobExecutionId;
 
-  @Indexed private String stepName;
+  private String stepName;
 
   private Date startTime;
 
