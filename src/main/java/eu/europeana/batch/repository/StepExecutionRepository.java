@@ -235,6 +235,7 @@ public class StepExecutionRepository extends AbstractRepository implements StepE
             UpdateOperators.set(JOB_EXECUTION_ID_KEY, stepExecution.getJobExecutionId()),
             handleNullField(START_TIME_KEY, stepExecution.getStartTime()),
             handleNullField(END_TIME_KEY, stepExecution.getEndTime()),
+            handleNullField(LAST_UPDATED_KEY, stepExecution.getLastUpdated()),
             UpdateOperators.set(STATUS_KEY, stepExecution.getStatus().toString()),
             UpdateOperators.set(COMMIT_COUNT_KEY, stepExecution.getCommitCount()),
             UpdateOperators.set(READ_COUNT_KEY, stepExecution.getReadCount()),
