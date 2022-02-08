@@ -26,7 +26,7 @@ This library provides MongoDB JobRepository support for Spring Batch.
     <dependency>
         <groupId>eu.europeana.api</groupId>
         <artifactId>spring-batch-mongo</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.5</version>
     </dependency>
     ```
 
@@ -34,6 +34,13 @@ This library provides MongoDB JobRepository support for Spring Batch.
  - Create a Morphia Datastore for connecting to Mongo
 
     ```
+    import eu.europeana.batch.entity.PackageMapper;
+   
+    import com.mongodb.MongoClientSettings;
+    import dev.morphia.Datastore;
+    import dev.morphia.Morphia;
+    ...
+    
     public Datastore batchDatastore() {
         Datastore datastore = Morphia.createDatastore(
                 MongoClientSettings.builder()
@@ -41,14 +48,13 @@ This library provides MongoDB JobRepository support for Spring Batch.
                 .build()
                 ), "<databaseName>");
             
-     // Required to create indices on database
+        // Required to create indices on database
         datastore.getMapper().mapPackage(PackageMapper.class.getPackageName());
         datastore.ensureIndexes();
         return datastore;
     }
     ```
-
-    replacing `<user>`, `<password>`, `<host>`, `<port>` and `<databaseName>` with the correct values.
+ 
 
 
 * Configure a `MongoBatchConfigurer` bean, using the Morphia Datastore and a TaskExecutor. 
@@ -59,7 +65,7 @@ This library provides MongoDB JobRepository support for Spring Batch.
        return new MongoBatchConfigurer(batchDatastore(), new SimpleAsyncTaskExecutor());
      }
     ```
-    _Any implementation of the Spring `TaskExecutor` interface can be used to control how jobs are asynchronously executed._
+    The example above uses a `SimpleAsyncTaskExecutor`, however any implementation of the Spring `TaskExecutor` interface can be used to control how jobs are executed.
 
 
 
