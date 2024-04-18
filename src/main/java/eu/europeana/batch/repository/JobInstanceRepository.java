@@ -1,9 +1,9 @@
 package eu.europeana.batch.repository;
 
 import static dev.morphia.query.Sort.descending;
-import static dev.morphia.query.experimental.filters.Filters.eq;
-import static dev.morphia.query.experimental.filters.Filters.or;
-import static dev.morphia.query.experimental.filters.Filters.regex;
+import static dev.morphia.query.filters.Filters.eq;
+import static dev.morphia.query.filters.Filters.or;
+import static dev.morphia.query.filters.Filters.regex;
 import static eu.europeana.batch.BatchConstants.JOB_INSTANCE_ID_KEY;
 import static eu.europeana.batch.BatchConstants.JOB_KEY_GENERATOR;
 import static eu.europeana.batch.BatchConstants.JOB_KEY_KEY;
@@ -12,7 +12,7 @@ import static eu.europeana.batch.BatchConstants.JOB_NAME_KEY;
 import dev.morphia.Datastore;
 import dev.morphia.query.FindOptions;
 import dev.morphia.query.Query;
-import dev.morphia.query.experimental.filters.Filter;
+import dev.morphia.query.filters.Filter;
 
 import eu.europeana.batch.entity.JobInstanceEntity;
 import java.util.List;

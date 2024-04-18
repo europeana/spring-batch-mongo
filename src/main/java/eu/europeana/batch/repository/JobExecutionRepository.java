@@ -1,14 +1,14 @@
 package eu.europeana.batch.repository;
 
 import static dev.morphia.query.Sort.descending;
-import static dev.morphia.query.experimental.filters.Filters.eq;
-import static dev.morphia.query.experimental.filters.Filters.in;
+import static dev.morphia.query.filters.Filters.eq;
+import static dev.morphia.query.filters.Filters.in;
 import static eu.europeana.batch.BatchConstants.*;
 
 import com.mongodb.client.result.UpdateResult;
 import dev.morphia.Datastore;
 import dev.morphia.query.FindOptions;
-import dev.morphia.query.experimental.updates.UpdateOperators;
+import dev.morphia.query.updates.UpdateOperators;
 import eu.europeana.batch.entity.JobExecutionEntity;
 import java.util.List;
 import java.util.Set;

@@ -1,13 +1,13 @@
 package eu.europeana.batch.repository;
 
-import static dev.morphia.query.experimental.filters.Filters.eq;
+import static dev.morphia.query.filters.Filters.eq;
 import static eu.europeana.batch.BatchConstants.BATCH_INSERT_OPTIONS;
 import static eu.europeana.batch.BatchConstants.EXECUTION_CTX_ID_KEY;
 import static eu.europeana.batch.BatchConstants.EXECUTION_CTX_SERIALIZED_KEY;
 import static eu.europeana.batch.BatchConstants.EXECUTION_CTX_TYPE_KEY;
 
 import dev.morphia.Datastore;
-import dev.morphia.query.experimental.updates.UpdateOperators;
+import dev.morphia.query.updates.UpdateOperators;
 
 import eu.europeana.batch.entity.ExecutionContextEntity;
 import eu.europeana.batch.entity.ExecutionContextEntityType;

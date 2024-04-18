@@ -1,25 +1,24 @@
 package eu.europeana.batch.repository;
 
-import static dev.morphia.query.experimental.filters.Filters.eq;
+import static dev.morphia.query.filters.Filters.eq;
 import static eu.europeana.batch.BatchConstants.DESCENDING_JOB_EXECUTION;
 import static eu.europeana.batch.BatchConstants.JOB_EXECUTION_ID_KEY;
 import static eu.europeana.batch.BatchConstants.JOB_INSTANCE_ID_KEY;
 import static eu.europeana.batch.BatchConstants.JOB_NAME_KEY;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.mongodb.client.DistinctIterable;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.ReturnDocument;
 import dev.morphia.Datastore;
 import dev.morphia.ModifyOptions;
 import dev.morphia.query.FindOptions;
-import dev.morphia.query.experimental.updates.UpdateOperator;
-import dev.morphia.query.experimental.updates.UpdateOperators;
-import dev.morphia.query.internal.MorphiaCursor;
+import dev.morphia.query.MorphiaCursor;
+import dev.morphia.query.updates.UpdateOperator;
+import dev.morphia.query.updates.UpdateOperators;
 import eu.europeana.batch.entity.JobExecutionEntity;
 import eu.europeana.batch.entity.JobInstanceEntity;
 import eu.europeana.batch.entity.SequenceGenerator;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractRepository {
 
@@ -138,7 +137,7 @@ public abstract class AbstractRepository {
    */
   protected List<String> queryDistinctStringValues(final Class<?> clazz, final String fieldName) {
     DistinctIterable<String> iterable =
-        getDataStore().getMapper().getCollection(clazz).distinct(fieldName, String.class);
+        getDataStore().getCollection(clazz).distinct(fieldName, String.class);
 
     MongoCursor<String> cursor = iterable.iterator();
     List<String> result = new ArrayList<>();
@@ -163,6 +162,6 @@ public abstract class AbstractRepository {
    * @param clazz Morphia entity to clear collection for
    */
   protected void dropCollection(final Class<?> clazz) {
-    getDataStore().getMapper().getCollection(clazz).drop();
+    getDataStore().getCollection(clazz).drop();
   }
 }
