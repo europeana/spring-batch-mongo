@@ -129,7 +129,7 @@ public class StepExecutionRepository extends AbstractRepository implements StepE
   }
 
   @Override
-  public int countStepExecutions(JobInstance jobInstance, String stepName) {
+  public long countStepExecutions(JobInstance jobInstance, String stepName) {
     long jobInstanceId = jobInstance.getId();
 
     // get all job executionIds for this jobInstance
@@ -139,7 +139,7 @@ public class StepExecutionRepository extends AbstractRepository implements StepE
       return 0;
     }
 
-    return (int) queryCountStepExecutions(jobExecutionId, stepName);
+    return queryCountStepExecutions(jobExecutionId, stepName);
   }
 
   @Nullable
@@ -168,7 +168,8 @@ public class StepExecutionRepository extends AbstractRepository implements StepE
   private void validateStepExecution(StepExecution stepExecution) {
     Assert.notNull(stepExecution, "StepExecution cannot be null.");
     Assert.notNull(stepExecution.getStepName(), "StepExecution step name cannot be null.");
-    Assert.notNull(stepExecution.getStartTime(), "StepExecution start time cannot be null.");
+    // Not needed anymore to check step Execution start time as that is nullable now
+    // Assert.notNull(stepExecution.getStartTime(), "StepExecution start time cannot be null.");
     Assert.notNull(stepExecution.getStatus(), "StepExecution status cannot be null.");
   }
 
