@@ -4,7 +4,8 @@ import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import dev.morphia.annotations.Indexed;
 import eu.europeana.batch.BatchRepositoryUtils;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import org.bson.types.ObjectId;
@@ -24,9 +25,9 @@ public class JobExecutionEntity {
 
   @Indexed private long jobInstanceId;
 
-  private Date startTime;
+  private LocalDateTime startTime;
 
-  private Date endTime;
+  private LocalDateTime endTime;
 
   private String status;
 
@@ -34,9 +35,9 @@ public class JobExecutionEntity {
 
   private String exitMessage;
 
-  private Date createTime;
+  private LocalDateTime createTime;
 
-  private Date lastUpdated;
+  private LocalDateTime lastUpdated;
 
   private Map<String, Object> jobParameters = new HashMap<>();
 
@@ -52,11 +53,11 @@ public class JobExecutionEntity {
     return jobInstanceId;
   }
 
-  public Date getStartTime() {
+  public LocalDateTime getStartTime() {
     return startTime;
   }
 
-  public Date getEndTime() {
+  public LocalDateTime getEndTime() {
     return endTime;
   }
 
@@ -72,11 +73,11 @@ public class JobExecutionEntity {
     return exitMessage;
   }
 
-  public Date getCreateTime() {
+  public LocalDateTime getCreateTime() {
     return createTime;
   }
 
-  public Date getLastUpdated() {
+  public LocalDateTime getLastUpdated() {
     return lastUpdated;
   }
 

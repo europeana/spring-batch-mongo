@@ -19,9 +19,9 @@ public class BatchRepositoryUtils {
    */
   public static Map<String, Object> convertToMap(JobParameters jobParameters) {
     // first clean the parameters, as we can't have "." within mongo field names
-    Map<String, JobParameter> jobParams = jobParameters.getParameters();
+    Map<String, JobParameter<?>> jobParams = jobParameters.getParameters();
     Map<String, Object> paramMap = new HashMap<>(jobParams.size());
-    for (Entry<String, JobParameter> entry : jobParams.entrySet()) {
+    for (Entry<String, JobParameter<?>> entry : jobParams.entrySet()) {
       paramMap.put(
           entry.getKey().replaceAll(DOT_STRING, DOT_ESCAPE_STRING), entry.getValue().getValue());
     }
@@ -33,7 +33,7 @@ public class BatchRepositoryUtils {
       return new JobParameters();
     }
 
-    Map<String, JobParameter> destParams = new HashMap<>();
+    Map<String, JobParameter<?>> destParams = new HashMap<>();
 
     for (Entry<String, Object> param : originParams.entrySet()) {
       String key = param.getKey();
@@ -42,13 +42,13 @@ public class BatchRepositoryUtils {
       JobParameter jobParameter = null;
 
       if (value.getClass().isAssignableFrom(String.class)) {
-        jobParameter = new JobParameter(String.valueOf(value));
+        jobParameter = new JobParameter(value, String.class );
       } else if (value.getClass().isAssignableFrom(Long.class)) {
-        jobParameter = new JobParameter((Long) value);
+        jobParameter = new JobParameter(value, Long.class);
       } else if (value.getClass().isAssignableFrom(Double.class)) {
-        jobParameter = new JobParameter((Double) value);
+        jobParameter = new JobParameter(value, Double.class);
       } else if (value.getClass().isAssignableFrom(Date.class)) {
-        jobParameter = new JobParameter((Date) value);
+        jobParameter = new JobParameter(value, Date.class);
       }
 
       // only these types are supported, so no need to assert that jobParameter is null

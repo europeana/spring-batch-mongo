@@ -9,7 +9,8 @@ import dev.morphia.annotations.Id;
 import dev.morphia.annotations.Index;
 import dev.morphia.annotations.Indexed;
 import dev.morphia.annotations.Indexes;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 import org.bson.types.ObjectId;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.ExitStatus;
@@ -29,21 +30,21 @@ public class StepExecutionEntity {
 
   private String stepName;
 
-  private Date startTime;
+  private LocalDateTime startTime;
 
-  private Date endTime;
+  private LocalDateTime endTime;
   private String status;
-  private int commitCount;
-  private int readCount;
-  private int filterCount;
-  private int writeCount;
+  private long commitCount;
+  private long readCount;
+  private long filterCount;
+  private long writeCount;
   private String exitCode;
   private String exitMessage;
-  private int readSkipCount;
-  private int writeSkipCount;
-  private int processSkipCount;
-  private int rollbackCount;
-  private Date lastUpdated;
+  private long readSkipCount;
+  private long writeSkipCount;
+  private long processSkipCount;
+  private long rollbackCount;
+  private LocalDateTime lastUpdated;
   private int version;
 
   public long getStepExecutionId() {
@@ -54,11 +55,11 @@ public class StepExecutionEntity {
     return stepName;
   }
 
-  public Date getStartTime() {
+  public LocalDateTime getStartTime() {
     return startTime;
   }
 
-  public Date getEndTime() {
+  public LocalDateTime getEndTime() {
     return endTime;
   }
 
@@ -66,19 +67,19 @@ public class StepExecutionEntity {
     return status;
   }
 
-  public int getCommitCount() {
+  public long getCommitCount() {
     return commitCount;
   }
 
-  public int getReadCount() {
+  public long getReadCount() {
     return readCount;
   }
 
-  public int getFilterCount() {
+  public long getFilterCount() {
     return filterCount;
   }
 
-  public int getWriteCount() {
+  public long getWriteCount() {
     return writeCount;
   }
 
@@ -90,23 +91,23 @@ public class StepExecutionEntity {
     return exitMessage;
   }
 
-  public int getReadSkipCount() {
+  public long getReadSkipCount() {
     return readSkipCount;
   }
 
-  public int getWriteSkipCount() {
+  public long getWriteSkipCount() {
     return writeSkipCount;
   }
 
-  public int getProcessSkipCount() {
+  public long getProcessSkipCount() {
     return processSkipCount;
   }
 
-  public int getRollbackCount() {
+  public long getRollbackCount() {
     return rollbackCount;
   }
 
-  public Date getLastUpdated() {
+  public LocalDateTime getLastUpdated() {
     return lastUpdated;
   }
 

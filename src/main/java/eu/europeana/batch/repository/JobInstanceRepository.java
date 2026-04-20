@@ -126,14 +126,14 @@ public class JobInstanceRepository extends AbstractRepository implements JobInst
   }
 
   @Override
-  public int getJobInstanceCount(String jobName) throws NoSuchJobException {
+  public long getJobInstanceCount(String jobName) throws NoSuchJobException {
     long count = queryCountJobInstances(jobName);
 
     if (count == 0) {
       throw new NoSuchJobException("No job instances were found for job name " + jobName);
     }
 
-    return (int) count;
+    return count;
   }
 
   private JobInstanceEntity queryGetJobInstance(long jobInstanceId) {
